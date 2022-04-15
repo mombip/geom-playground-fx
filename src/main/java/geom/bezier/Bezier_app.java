@@ -11,7 +11,7 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 
 import geom.shapes.Anchor;
 import geom.shapes.ControlHandle;
-import geom.shapes.Segment;
+import geom.shapes.CubicSegment;
 import javafx.application.Application;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
@@ -32,7 +32,7 @@ public class Bezier_app extends Application {
 
 
 //    private CubicCurve currentCurve = null;
-private Segment prevSegment = null;
+private CubicSegment prevSegment = null;
     
 //    private Circle c = new Circle(100,100,3);
 
@@ -111,7 +111,7 @@ private Segment prevSegment = null;
 		System.out.println("line1" + prevPoint);
 		System.out.println("line2" + newPoint);
 		
-        Segment currentCurve = makeCurve(basePoint, prevPoint, newPoint, prevSegment);
+        CubicSegment currentCurve = makeCurve(basePoint, prevPoint, newPoint, prevSegment);
 
         final CubicCurve cc = currentCurve.getCubicCurve();
         pane.getChildren().add(0, cc);
@@ -142,7 +142,7 @@ private Segment prevSegment = null;
 	private float pathCoordsBuffer[] = new float[6];
 	
 
-    private Segment makeCurve(Point2D basePoint, Point2D prevPoint, Point2D currentPoint, Segment prevCurve) {
+    private CubicSegment makeCurve(Point2D basePoint, Point2D prevPoint, Point2D currentPoint, CubicSegment prevCurve) {
         CubicCurve cc = new CubicCurve();
         cc.setStroke(Color.BLACK);
         cc.setStrokeWidth(3);
@@ -151,10 +151,10 @@ private Segment prevSegment = null;
             cc.startXProperty().bindBidirectional(prevCurve.getCubicCurve().endXProperty());
             cc.startYProperty().bindBidirectional(prevCurve.getCubicCurve().endYProperty());
         }
-        return new Segment(cc);
+        return new CubicSegment(cc);
     }
 
-    private void updateCurve(Point2D startPoint, Point2D midPoint, Point2D endPoint, Segment cc) {
+    private void updateCurve(Point2D startPoint, Point2D midPoint, Point2D endPoint, CubicSegment cc) {
     	
         if(midPoint != null && endPoint != null) {
             Point2D control1 = midPoint;

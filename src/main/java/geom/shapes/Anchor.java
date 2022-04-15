@@ -14,7 +14,7 @@ import javafx.scene.shape.StrokeType;
 public class Anchor extends Circle {
     public Anchor(Color color, DoubleProperty x, DoubleProperty y, double size) {
         super(x.get(), y.get(), size);
-        setFill(color.deriveColor(1, 1, 1, 0.8));
+        setupColor(color);
         setStroke(color);
         setStrokeWidth(2);
         setStrokeType(StrokeType.INSIDE);
@@ -24,7 +24,14 @@ public class Anchor extends Circle {
         enableDrag();
     }
 
+    public Anchor(Color color, double x, double y, double size) {
+        super(x, y, size);
+        setupColor(color);
+    }
 
+    private void setupColor(Color color) {
+        setFill(color.deriveColor(1, 1, 1, 0.8));
+    }
 
     // make a node movable by dragging it around with the mouse.
     private void enableDrag() {

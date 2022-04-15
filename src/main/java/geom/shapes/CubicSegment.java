@@ -4,12 +4,12 @@ import javafx.beans.InvalidationListener;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.CubicCurve;
 
-public class Segment {
+public class CubicSegment {
 
     CubicCurve cubicCurve;
     ControlHandle startHandle, endHandle;
 
-    public Segment(CubicCurve cc) {
+    public CubicSegment(CubicCurve cc) {
         this.cubicCurve = cc;
     }
 

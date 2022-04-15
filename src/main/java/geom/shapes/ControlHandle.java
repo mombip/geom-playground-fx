@@ -9,8 +9,8 @@ import javafx.scene.shape.Line;
 
 public class ControlHandle extends Group {
 
-    private Segment segment1;
-    private Segment segment2;
+    private CubicSegment segment1;
+    private CubicSegment segment2;
     private Line controlLine1;
     private Line controlLine2;
     private Anchor control1;
@@ -18,7 +18,7 @@ public class ControlHandle extends Group {
     private Anchor control2;
 
 
-    public ControlHandle(Segment curve1, Segment curve2, double size) {
+    public ControlHandle(CubicSegment curve1, CubicSegment curve2, double size) {
         if(curve1 != null){
             this.segment1 = curve1;
             CubicCurve c1 = curve1.getCubicCurve();
